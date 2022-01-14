@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Btn(props) {
+            console.log(props)
+            return (
+                <button
+                    style={{
+                        backgroundColor: "tomato",
+                        color: "while",
+                        padding: "10px 20px",
+                        border: 0,
+                        borderRadius: 10,
+                    }}
+                    onClick={props.onClick}
+                >
+                    {props.text}
+                </button>
+            );
+        }
+        function App() {
+            const [ value, setValue ] = React.useState("Save Changes");
+            const changeValue = () => setValue("Revert Changes");
+            return(
+                <div>
+                    <Btn 
+                        text={value}
+                        onClick={changeValue}
+                    />
+                    <Btn 
+                        text="Confirm" 
+
+                    />
+                </div>
+            );
+        }
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
