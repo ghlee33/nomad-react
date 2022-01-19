@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import styles from "./Detail.module.css";
 
 function Detail() {
     const { id } = useParams();
@@ -15,10 +16,15 @@ function Detail() {
     useEffect(() => {
         getMovie();
     }, []);
-    console.log(Movie);
 
     return (
-        <h1>Detail</h1>
+        <div className={styles.container}>
+            <img src={Movie.large_cover_image} className={styles.cover_image} />
+            <div className={styles.details}>
+                <a href={Movie.url}>{Movie.title}</a>
+                <p>{Movie.description_full}</p>
+            </div>
+        </div>
     );
 }
 export default Detail;
